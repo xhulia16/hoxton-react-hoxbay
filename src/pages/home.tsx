@@ -24,9 +24,10 @@ export function Home() {
       <ul className="products-container__list">
         {products.map((item) => (
           <li className="product-item">
-            <Link to="/products/:itemId">
-            <img src={item.image}></img>
-            <h3>{item.title}</h3></Link>
+            <Link to={`/products/${item.id}`}>
+              <img src={item.image}></img>
+              <h3>{item.title}</h3>
+            </Link>
           </li>
         ))}
       </ul>
