@@ -12,6 +12,7 @@ type Product = {
 
 export function Basket() {
   const [basket, setBasket] = useState<Product[]>([]);
+  const [selected, setSelected] = useState(0);
 
   useEffect(() => {
     fetch("http://localhost:4000/products")
@@ -20,7 +21,11 @@ export function Basket() {
   }, []);
 
   const basketItems = basket.filter((item) => item.inCart > 0);
-  console.log(basketItems);
+
+  const handleChange = event => {
+    console.log(event.target.value);
+    setSelected(event.target.value);
+  };
 
   return (
     <div className="basket-container">
@@ -32,14 +37,14 @@ export function Basket() {
             <h4>{item.title}</h4>
             <label>
               Qty:
-              <select name="quantity">
+              <select name="quantity" onChange={handleChange}>
+              <option ></option>
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
-              <option value="3">3</option>
               </select>
             </label>
-            <h4>Item Total: £{item.price}</h4>
+            <h4>Item Total: £{item.price* selected}</h4>
           </li>
         ))}
       </ul>
