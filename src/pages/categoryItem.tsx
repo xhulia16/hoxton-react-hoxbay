@@ -25,8 +25,10 @@ export function CategoryItems() {
       <ul className="products-container__list">
         {categoryItems.map((item) => (
           <li key={item.id} className="product-item">
+            <Link to={`/products/${item.id}`}>
             <img src={item.image}></img>
             <h3>{item.title}</h3>
+            </Link>
           </li>
         ))}
       </ul>
