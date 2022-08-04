@@ -8,7 +8,13 @@ type Product = {
   description: string;
   categoryId: number;
   image: string;
+  inCart: number;
 };
+
+type Basket={
+  Item: Product[]
+  inCart: number
+}
 
 export function CategoryItems() {
   const [categoryItems, setCategoryItems] = useState<Product[]>([]);

@@ -1,5 +1,43 @@
-export function Basket(){
-    return(
-        <h1>This is basket!</h1>
-    )
+import { useEffect, useState } from "react";
+
+type Product = {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  categoryId: number;
+  image: string;
+  inCart: number;
+};
+
+export function Basket() {
+  const [basket, setBasket] = useState<Product[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/products")
+      .then((resp) => resp.json())
+      .then((productsFromServer) => setBasket(productsFromServer));
+  }, []);
+
+  const basketItems=basket.filter((item)=>(item.inCart>0 ))
+  console.log(basketItems)
+  
+
+  return (
+    <div className="basket-container">
+      <h2>Your Basket</h2>
+      <ul>
+        {basketItems.map(item=> 
+             <li className="basket-container__item">
+              
+                <img src={item.image}></img>
+                <h4>{item.title}</h4>
+                <h4>{item.price}</h4>
+                
+             </li>
+            )}
+       
+      </ul>
+    </div>
+  );
 }

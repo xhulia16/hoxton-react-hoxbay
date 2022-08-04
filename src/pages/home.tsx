@@ -8,6 +8,7 @@ type Product = {
   description: string;
   categoryId: number;
   image: string;
+  inCart:number;
 };
 
 export function Home() {
@@ -18,6 +19,7 @@ export function Home() {
       .then((resp) => resp.json())
       .then((productsFromServer) => setProducts(productsFromServer));
   }, []);
+
 
   return (
     <div className="products-container">
