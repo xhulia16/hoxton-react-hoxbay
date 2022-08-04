@@ -28,12 +28,10 @@ export function Basket() {
       <h2>Your Basket</h2>
       <ul>
         {basketItems.map(item=> 
-             <li className="basket-container__item">
-              
-                <img src={item.image}></img>
+             <li className="basket-container__item :last-of-type">
+                <img className= "basket-image"src={item.image}></img>
                 <h4>{item.title}</h4>
-                <h4>{item.price}</h4>
-                
+                <h4>{item.price}</h4>        
              </li>
             )}
        
