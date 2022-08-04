@@ -15,10 +15,11 @@ type Product = {
 export function StoreItem() {
   const[storeItem, setStoreItem] = useState<null | Product>(null);
   const params = useParams();
+  const [count, setCount]=useState(0)
 
   const navigate = useNavigate();
 
-  let count=0; 
+
 
   useEffect(() => {
     fetch(`http://localhost:4000/products/${params.itemId}`)
@@ -63,9 +64,8 @@ export function StoreItem() {
             <p>{storeItem.description}</p>
             <p>£{storeItem.price}</p>
             <button onClick={() => {
+              setCount(count+1)
               addToBasket()
-              count++
-              console.log(count)
               navigate("/basket")
               }} >
                 Add to Basket

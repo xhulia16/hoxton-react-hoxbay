@@ -267,6 +267,10 @@ img {
   column-gap: 2rem;
 }
 
+.basket-container__item h4{
+  font-weight: 400;
+}
+
 .basket-image{
   width: 80px;
 }
