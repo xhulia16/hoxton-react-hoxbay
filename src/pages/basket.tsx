@@ -31,7 +31,7 @@ export function Basket() {
              <li className="basket-container__item :last-of-type">
                 <img className= "basket-image"src={item.image}></img>
                 <h4>{item.title}</h4>
-                <h4>{item.price}</h4>        
+                <h4>Item Total: £{item.price}</h4>        
              </li>
             )}
        

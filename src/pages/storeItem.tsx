@@ -11,10 +11,6 @@ type Product = {
   inCart: number;
 };
 
-type Basket={
-  Item: Product[]
-  inCart: number
-}
 
 export function StoreItem() {
   const[storeItem, setStoreItem] = useState<null | Product>(null);
@@ -22,11 +18,13 @@ export function StoreItem() {
 
   const navigate = useNavigate();
 
+  let count=0; 
+
   useEffect(() => {
     fetch(`http://localhost:4000/products/${params.itemId}`)
       .then((resp) => resp.json())
       .then((items) => setStoreItem(items));
-  }, []);
+  }, [count]);
 
   if (storeItem === null)
     return (
@@ -66,6 +64,8 @@ export function StoreItem() {
             <p>£{storeItem.price}</p>
             <button onClick={() => {
               addToBasket()
+              count++
+              console.log(count)
               navigate("/basket")
               }} >
                 Add to Basket
