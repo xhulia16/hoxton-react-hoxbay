@@ -7,6 +7,7 @@ import { Basket } from "./pages/basket"
 import { useEffect, useState } from "react"
 import { StoreItem } from "./pages/storeItem"
 import { PageNotFound } from "./pages/pageNotFound"
+import { CategoryItems } from "./pages/categoryItem"
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/products' element={<Home/>} />
           <Route path='/products/:itemId' element={<StoreItem/>} />
           <Route path='/categories' element={<Categories/>} />
+          <Route path='/categories/:itemId' element={<CategoryItems/>} />
           <Route path='/basket' element={<Basket/>} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
