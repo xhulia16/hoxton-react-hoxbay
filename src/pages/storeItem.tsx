@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 
 type Product = {
   id: number;
@@ -14,6 +14,8 @@ export function StoreItem() {
   const [storeItem, setStoreItem] = useState<null | Product>(null);
   const params = useParams();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetch(`http://localhost:4000/products/${params.itemId}`)
       .then((resp) => resp.json())
@@ -27,7 +29,7 @@ export function StoreItem() {
       </div>
     );
 
-  if (storeItem.id === undefined) return <Navigate to="/products" />;
+  if (storeItem.id === undefined) return <Navigate to='/products'/>;
 
   return(
     <div className="product-detail ">
@@ -39,7 +41,8 @@ export function StoreItem() {
             <h2>{storeItem.title}</h2>
             <p>{storeItem.description}</p>
             <p>£{storeItem.price}</p>
-            <button>Add to basket</button>
+            <button onClick={() => navigate("/basket")} >Add to Basket</button>
+            
         </div>
     </div>
   ) 

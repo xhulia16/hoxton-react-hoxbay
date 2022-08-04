@@ -23,7 +23,7 @@ export function Home() {
     <div className="products-container">
       <ul className="products-container__list">
         {products.map((item) => (
-          <li className="product-item">
+          <li key={item.id} className="product-item">
             <Link to={`/products/${item.id}`}>
               <img src={item.image}></img>
               <h3>{item.title}</h3>
