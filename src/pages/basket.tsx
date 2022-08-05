@@ -15,21 +15,18 @@ export function Basket() {
 
   const options = [
     {
-      label: "0",
-      value: "0",
-    },
-    {
       label: "1",
       value: "1",
+    },
+    {
+      label: "0",
+      value: "0",
     },
     {
       label: "2",
       value: "2",
     },
   ];
-
-
-
 
   useEffect(() => {
     fetch("http://localhost:4000/products")
@@ -39,8 +36,7 @@ export function Basket() {
 
   const basketItems = basket.filter((item) => item.inCart > 0);
 
-  const [quantity, setQuantity] = useState('');
-
+  const [quantity, setQuantity] = useState("1");
 
   return (
     <div className="basket-container">
@@ -52,13 +48,18 @@ export function Basket() {
             <h4>{item.title}</h4>
             <label>
               Qty:
-              <select name="quantity" onChange={event => {setQuantity(event.target.value)}}>
-              {options.map((option) => (
-              <option value={option.value}>{option.label}</option>
-            ))}
+              <select
+                name="quantity"
+                onChange={(event) => {
+                  setQuantity(event.target.value);
+                }}
+              >
+                {options.map((option) => (
+                  <option value={option.value}>{option.label}</option>
+                ))}
               </select>
             </label>
-            <h4>Item Total: £{item.price*Number(quantity)}</h4>
+            <h4>Item Total: £{item.price * Number(quantity)}</h4>
           </li>
         ))}
       </ul>
