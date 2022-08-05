@@ -15,7 +15,6 @@ type Product = {
 export function StoreItem() {
   const[storeItem, setStoreItem] = useState<null | Product>(null);
   const params = useParams();
-  const [count, setCount]=useState(0)
 
   const navigate = useNavigate();
 
@@ -25,7 +24,7 @@ export function StoreItem() {
     fetch(`http://localhost:4000/products/${params.itemId}`)
       .then((resp) => resp.json())
       .then((items) => setStoreItem(items));
-  }, [count]);
+  }, []);
 
   if (storeItem === null)
     return (
@@ -45,19 +44,9 @@ export function StoreItem() {
       }),
       headers: { 'Content-type': `application/json; charset=UTF-8` },
     }).then((response) => response.json())
-  }
-
-  function increaseCount(){
-    console.log(count)
-    let newCount= count+1;
-    setCount(newCount);
-    console.log(newCount)
-  }
-
- function onClickEvents(){
-   addToBasket();
-   increaseCount();
-   navigate("/basket");
+    .then(data => {
+      navigate("/basket");
+    })
   }
 
   return(
@@ -70,7 +59,7 @@ export function StoreItem() {
             <h2>{storeItem.title}</h2>
             <p>{storeItem.description}</p>
             <p>£{storeItem.price}</p>
-            <button onClick={() => { onClickEvents() } }>
+            <button onClick={() => { addToBasket() } }>
                 Add to Basket
                 </button>
             

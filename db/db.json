@@ -52,7 +52,7 @@
       "description": "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
       "categoryId": 3,
       "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
-      "inCart": 1
+      "inCart": 0
     },
     {
       "id": 5,
@@ -61,7 +61,7 @@
       "description": "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
       "categoryId": 2,
       "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
-      "inCart": 5
+      "inCart": 0
     },
     {
       "id": 6,
@@ -178,7 +178,7 @@
       "description": "95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem",
       "categoryId": 4,
       "image": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
-      "inCart": 0
+      "inCart": 1
     },
     {
       "id": 19,
