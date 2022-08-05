@@ -36,11 +36,6 @@ export function StoreItem() {
 
   if (storeItem.id === undefined) return <Navigate to='/products'/>;
 
-  //function addToCart(){
-    //const newItem = structuredClone(storeItem)
-    //newItem.inCart+= 1;
-   // setStoreItem(newItem)
-  //}
 
   function addToBasket(){ 
     fetch(`http://localhost:4000/products/${params.itemId}`, {
@@ -52,6 +47,18 @@ export function StoreItem() {
     }).then((response) => response.json())
   }
 
+  function increaseCount(){
+    console.log(count)
+    let newCount= count+1;
+    setCount(newCount);
+    console.log(newCount)
+  }
+
+ function onClickEvents(){
+   addToBasket();
+   increaseCount();
+   navigate("/basket");
+  }
 
   return(
     <div className="product-detail ">
@@ -63,11 +70,7 @@ export function StoreItem() {
             <h2>{storeItem.title}</h2>
             <p>{storeItem.description}</p>
             <p>£{storeItem.price}</p>
-            <button onClick={() => {
-              setCount(count+1)
-              addToBasket()
-              navigate("/basket")
-              }} >
+            <button onClick={() => { onClickEvents() } }>
                 Add to Basket
                 </button>
             

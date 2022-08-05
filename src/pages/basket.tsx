@@ -28,6 +28,7 @@ export function Basket() {
     },
   ];
 
+
   useEffect(() => {
     fetch("http://localhost:4000/products")
       .then((resp) => resp.json())
@@ -38,6 +39,7 @@ export function Basket() {
 
   const [quantity, setQuantity] = useState("1");
 
+  
   return (
     <div className="basket-container">
       <h2>Your Basket</h2>
