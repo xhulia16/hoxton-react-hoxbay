@@ -12,7 +12,24 @@ type Product = {
 
 export function Basket() {
   const [basket, setBasket] = useState<Product[]>([]);
-  const [selected, setSelected] = useState(0);
+
+  const options = [
+    {
+      label: "0",
+      value: "0",
+    },
+    {
+      label: "1",
+      value: "1",
+    },
+    {
+      label: "2",
+      value: "2",
+    },
+  ];
+
+
+
 
   useEffect(() => {
     fetch("http://localhost:4000/products")
@@ -22,10 +39,8 @@ export function Basket() {
 
   const basketItems = basket.filter((item) => item.inCart > 0);
 
-  const handleChange = event => {
-    console.log(event.target.value);
-    setSelected(event.target.value);
-  };
+  const [quantity, setQuantity] = useState('');
+
 
   return (
     <div className="basket-container">
@@ -37,14 +52,13 @@ export function Basket() {
             <h4>{item.title}</h4>
             <label>
               Qty:
-              <select name="quantity" onChange={handleChange}>
-              <option ></option>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
+              <select name="quantity" onChange={event => {setQuantity(event.target.value)}}>
+              {options.map((option) => (
+              <option value={option.value}>{option.label}</option>
+            ))}
               </select>
             </label>
-            <h4>Item Total: £{item.price* selected}</h4>
+            <h4>Item Total: £{item.price*Number(quantity)}</h4>
           </li>
         ))}
       </ul>
