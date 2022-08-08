@@ -39,7 +39,7 @@ export function Basket() {
 
   const [quantity, setQuantity] = useState("1");
 
-  
+ 
   return (
     <div className="basket-container">
       <h2>Your Basket</h2>
@@ -50,7 +50,7 @@ export function Basket() {
             <h4>{item.title}</h4>
             <label>
               Qty:
-              <select
+              <select value={`${item.inCart}`} 
                 name="quantity"
                 onChange={(event) => {
                   setQuantity(event.target.value);
